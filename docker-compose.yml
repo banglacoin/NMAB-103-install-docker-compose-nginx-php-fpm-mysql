@@ -12,6 +12,21 @@ services:
       - php-fpm
 
   php-fpm:
-    image: php:7.4-fpm
+    build:
+      context: .docker/php-fpm
     volumes:
       - ./www:/app
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: 'app'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - "3306:3306"
+    volumes:
+      - my-database:/var/lib/mysql
+volumes:
+  my-database:
