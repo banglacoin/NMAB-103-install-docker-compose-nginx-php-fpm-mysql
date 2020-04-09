@@ -16,6 +16,8 @@ services:
       context: .docker/php-fpm
     volumes:
       - ./www:/app
+    depends_on:
+      - mysql
 
   mysql:
     image: mysql:latest
