@@ -6,7 +6,16 @@
 </head>
 <body>
 
-<h1><?php echo phpinfo();?></h1>
+<h1><?php
+
+
+    $connection = mysqli_connect("mysql", "root", "password", "app");
+
+    if ($connection) {
+        echo 'connected';
+    }
+
+?></h1>
 
 </body>
 
